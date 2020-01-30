@@ -10,12 +10,12 @@ import UIKit
 
 class AddPhotoVC: UIViewController {
     
-    
     // MARK: - UI Elements
     
     var imageView = UIImageView()
     var imagePicker = UIImagePickerController()
     var addButton = UIButton()
+    var textField = UITextField()
     
     // MARK: View Controller LifeCicle
 
@@ -24,30 +24,51 @@ class AddPhotoVC: UIViewController {
         setupViews()
     }
     
-    
     // MARK: - Functions
     
     func setupViews() {
         
         view.backgroundColor = .white
         
+        let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(add))
+        
+        navigationItem.rightBarButtonItem = saveButton
+        
         view.addSubview(imageView)
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.backgroundColor = .red
+        imageView.backgroundColor = .lightGray
         
-        let width = view.frame.width - 200
+        let width = view.frame.width - 250
+        let centerX = view.center.x
+        
+        
         imageView.frame = CGRect(x: 0, y: 100, width: width, height: width)
-        imageView.center.x = view.center.x
+        imageView.center.x = centerX
         imageView.layer.cornerRadius = imageView.frame.width/2
+        
+        imageView.layer.borderWidth = 8.0
+        imageView.layer.borderColor = UIColor(white: 0.8, alpha: 1.0).cgColor
         
         view.addSubview(addButton)
         
         addButton.setTitle("Add Photo", for: .normal)
         addButton.frame = CGRect(x: 0, y:  width + 100, width: width, height: 45)
-        addButton.center.x = view.center.x
+        addButton.center.x = centerX
         addButton.setTitleColor(view.tintColor, for: .normal)
         addButton.addTarget(self, action: #selector(addImage), for: .touchUpInside)
+        
+        view.addSubview(textField)
+        textField.placeholder = "Add name"
+        textField.textAlignment = .center
+        textField.frame = CGRect(x: 0, y: addButton.layer.position.y + 20, width: width, height: 60)
+        textField.center.x = centerX
+        textField.becomeFirstResponder()
+    }
+    
+    
+    @objc func add() {
+        
     }
 }
 

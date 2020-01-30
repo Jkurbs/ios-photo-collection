@@ -14,10 +14,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        let initialViewController = AddPhotoVC()
+        
+        let layout = UICollectionViewFlowLayout()
+        let width = 60
+        layout.itemSize = CGSize(width: width, height: width)
+
+        let initialViewController = PhotosCollectionView(collectionViewLayout: layout)
         let navigationController = UINavigationController(rootViewController: initialViewController)
-       self.window?.rootViewController = navigationController
-       self.window?.makeKeyAndVisible()
+        self.window?.rootViewController = navigationController
+        self.window?.makeKeyAndVisible()
         guard let _ = (scene as? UIWindowScene) else { return }
     }
 
