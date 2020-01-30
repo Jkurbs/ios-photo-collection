@@ -16,7 +16,6 @@
 		6D46D25D23E29B8C0094DD10 /* PhotoCollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D46D25C23E29B8C0094DD10 /* PhotoCollectionTests.swift */; };
 		6D46D26823E29B8C0094DD10 /* PhotoCollectionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D46D26723E29B8C0094DD10 /* PhotoCollectionUITests.swift */; };
 		6D46D27723E29C180094DD10 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D46D27623E29C180094DD10 /* Photo.swift */; };
-		6D46D27923E29C770094DD10 /* AddPhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D46D27823E29C770094DD10 /* AddPhotoVC.swift */; };
 		6D46D28023E34DFC0094DD10 /* PhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D46D27F23E34DFC0094DD10 /* PhotoController.swift */; };
 		6D46D28323E34ED90094DD10 /* ThemeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D46D28223E34ED90094DD10 /* ThemeHelper.swift */; };
 		6D46D28523E352B40094DD10 /* PhotosCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D46D28423E352B40094DD10 /* PhotosCollectionView.swift */; };
@@ -58,7 +57,6 @@
 		6D46D26723E29B8C0094DD10 /* PhotoCollectionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionUITests.swift; sourceTree = "<group>"; };
 		6D46D26923E29B8C0094DD10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D46D27623E29C180094DD10 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = SOURCE_ROOT; };
-		6D46D27823E29C770094DD10 /* AddPhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoVC.swift; sourceTree = "<group>"; };
 		6D46D27F23E34DFC0094DD10 /* PhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhotoController.swift; path = PhotoCollection/Controller/PhotoController.swift; sourceTree = SOURCE_ROOT; };
 		6D46D28223E34ED90094DD10 /* ThemeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ThemeHelper.swift; path = PhotoCollection/ThemeHelper.swift; sourceTree = SOURCE_ROOT; };
 		6D46D28423E352B40094DD10 /* PhotosCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionView.swift; sourceTree = "<group>"; };
@@ -160,7 +158,6 @@
 		6D46D27B23E34C140094DD10 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				6D46D27823E29C770094DD10 /* AddPhotoVC.swift */,
 				6D46D28423E352B40094DD10 /* PhotosCollectionView.swift */,
 				6D46D28923E35B450094DD10 /* ThemeSelectionViewController.swift */,
 				6D46D28B23E377AD0094DD10 /* PhotoDetailViewController.swift */,
@@ -332,7 +329,6 @@
 				6D46D28A23E35B450094DD10 /* ThemeSelectionViewController.swift in Sources */,
 				6D46D24623E29B880094DD10 /* AppDelegate.swift in Sources */,
 				6D46D24823E29B880094DD10 /* SceneDelegate.swift in Sources */,
-				6D46D27923E29C770094DD10 /* AddPhotoVC.swift in Sources */,
 				6D46D28323E34ED90094DD10 /* ThemeHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,8 +16,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         let layout = UICollectionViewFlowLayout()
-        let width = 60
+        let width = ((self.window?.rootViewController?.view.frame.width)!/3) - 10
         layout.itemSize = CGSize(width: width, height: width)
+        layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 0, right: 5)
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
 
         let initialViewController = PhotosCollectionView(collectionViewLayout: layout)
         let navigationController = UINavigationController(rootViewController: initialViewController)

@@ -10,11 +10,11 @@ import UIKit
 
 class Photo {
     
-    var image: UIImage
+    var imageData: Data
     var title: String
     
-    init(image: UIImage, title: String) {
-        self.image = image
+    init(imageData: Data, title: String) {
+        self.imageData = imageData
         self.title = title
     }
 }

@@ -67,15 +67,18 @@ class ThemeSelectionViewController: ViewController {
     
     @objc func selectColor(_ sender: UIButton) {
         if sender.tag == 0 {
+            themeHelper?.setThemePreferenceToLight()
             UIView.animate(withDuration: 0.5) {
                 sender.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
                 self.darkView.transform = CGAffineTransform.identity
             }
         } else {
+            themeHelper?.setThemePreferenceToDark()
             UIView.animate(withDuration: 0.5) {
                sender.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
                 self.lightView.transform = CGAffineTransform.identity
            }
         }
+        self.dismiss(animated: true, completion: nil)
     }
 }

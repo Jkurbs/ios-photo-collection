@@ -10,7 +10,7 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class PhotosCollectionView: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class PhotosCollectionView: UICollectionViewController {
     
     var controller = PhotoController()
     var themeHelper = ThemeHelper()
@@ -19,47 +19,58 @@ class PhotosCollectionView: UICollectionViewController, UICollectionViewDelegate
         super.viewDidLoad()
 
         view.backgroundColor = .white
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .red
         let themeButton = UIBarButtonItem(title: "Theme", style: .plain, target: self, action: #selector(selectTheme))
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPhoto))
         
         navigationItem.leftBarButtonItem = themeButton
         navigationItem.rightBarButtonItem = addButton
         
-        collectionView.delegate = self
 
         self.collectionView!.register(PhotoCell.self, forCellWithReuseIdentifier: PhotoCell.id)
-        
+        self.collectionView.reloadData()
+    }
+    
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setTheme()
+        collectionView.reloadData()
     }
     
     
     // MARK: - Functions
     
     func setTheme() {
-        if let theme = themeHelper.themePreference {
-            if theme == "Dark" {
-                collectionView.backgroundColor = .darkGray
-            } else {
-                collectionView.backgroundColor = .light
-            }
+                
+        guard let theme = themeHelper.themePreference else {return}
+        if theme == "Dark" {
+            collectionView.backgroundColor = .darkGray
+        } else if theme == "Light" {
+            collectionView.backgroundColor = .light
         }
     }
     
     @objc func selectTheme() {
-        let vc = UINavigationController(rootViewController: ThemeSelectionViewController())
-        self.present(vc, animated: true, completion: nil)
+        let vc = ThemeSelectionViewController()
+        vc.themeHelper = self.themeHelper
+        let nav = UINavigationController(rootViewController: vc )
+        self.present(nav, animated: true, completion: nil)
     }
     
     @objc func addPhoto() {
-        navigationController?.pushViewController(AddPhotoVC(), animated: true)
+        let vc = PhotoDetailViewController()
+        vc.photoController = self.controller
+        vc.themeHelper = self.themeHelper
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
@@ -70,21 +81,18 @@ class PhotosCollectionView: UICollectionViewController, UICollectionViewDelegate
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCell.id, for: indexPath) as! PhotoCell
-        cell.backgroundColor = .red
         let photo = controller.photos[indexPath.row]
         cell.configure(photo)
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! PhotoCell
-        let vc = 
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellSize = CGSize(width: 60, height: 60)
-        return cellSize
+        let photo = self.controller.photos[indexPath.row]
+        let vc = PhotoDetailViewController()
+        vc.photo = photo
+        vc.photoController = self.controller
+        vc.themeHelper = self.themeHelper
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

@@ -22,14 +22,17 @@ class ThemeHelper {
     
     
     init() {
-        (themePreference != nil) ? setThemePreferenceToLight() : setThemePreferenceToDark()
+        guard themePreference == nil else { return }
+        setThemePreferenceToLight()
     }
     
     func setThemePreferenceToDark() {
         UserDefaults.standard.set("Dark", forKey: themePreferenceKey)
+        UserDefaults.standard.synchronize()
     }
     
     func setThemePreferenceToLight() {
         UserDefaults.standard.set("Light", forKey: themePreferenceKey)
+        UserDefaults.standard.synchronize()
     }
 }
